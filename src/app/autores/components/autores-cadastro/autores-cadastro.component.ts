@@ -42,7 +42,9 @@ export class AutoresCadastroComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(150),
       ]),
-      dataNascimento: new FormControl(autor?.dataNascimento || new Date().toISOString()),
+      dataNascimento: new FormControl(
+        autor?.dataNascimento || new Date().toISOString()
+      ),
       genero: new FormControl(
         autor?.genero || GeneroEnum.FEMININO,
         Validators.required

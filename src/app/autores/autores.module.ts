@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AutoresPageRoutingModule } from './autores-routing.module';
 
-import { AutoresPage } from './components/autores-lista/autores-lista.page';
+import { AutoresListaComponent } from './components/autores-lista/autores-lista.page';
 import { AutoresCadastroComponent } from './components/autores-cadastro/autores-cadastro.component';
 
 @NgModule({
@@ -19,6 +19,6 @@ import { AutoresCadastroComponent } from './components/autores-cadastro/autores-
     AutoresPageRoutingModule,
     HttpClientModule,
   ],
-  declarations: [AutoresPage, AutoresCadastroComponent]
+  declarations: [AutoresListaComponent, AutoresCadastroComponent]
 })
 export class AutoresPageModule {}

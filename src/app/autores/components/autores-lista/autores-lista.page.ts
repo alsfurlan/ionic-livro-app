@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  ToastController,
+  ViewDidLeave,
+  ViewWillEnter,
+  ViewWillLeave,
+} from '@ionic/angular';
 import { AutorInterface } from '../../types/autor.interface';
 import { AutorService } from '../../services/autor.service';
 
@@ -8,7 +14,9 @@ import { AutorService } from '../../services/autor.service';
   templateUrl: './autores-lista.page.html',
   styleUrls: ['./autores-lista.page.scss'],
 })
-export class AutoresPage implements OnInit {
+export class AutoresListaComponent
+  implements OnInit, ViewWillEnter, ViewDidLeave, ViewWillLeave, ViewDidLeave
+{
   autores: AutorInterface[] = [];
 
   constructor(
@@ -37,12 +45,21 @@ export class AutoresPage implements OnInit {
   ngOnInit() {}
 
   listar() {
-    this.autorService.getAutores().subscribe(
+    const observable = this.autorService.getAutores();
+    observable.subscribe(
       (dados) => {
         this.autores = dados;
       },
       (erro) => {
         console.error(erro);
+        this.toastController
+          .create({
+            message: `Não foi possível listar os autores`,
+            duration: 5000,
+            keyboardClose: true,
+            color: 'danger',
+          })
+          .then((t) => t.present());
       }
     );
   }
