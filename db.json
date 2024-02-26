@@ -19,10 +19,48 @@
       "id": 3
     },
     {
-      "nome": "Eric Evans",
-      "dataNascimento": "2023-11-15T00:15:00",
+      "nome": "J.K. Rowling",
+      "dataNascimento": "1934-01-27T23:10:00",
       "genero": "M",
       "id": 4
+    }
+  ],
+  "livros": [
+    {
+      "titulo": "JavaScript - The Good Parts",
+      "subtitulo": "",
+      "numeroPaginas": 170,
+      "isbn": "0596517742",
+      "editora": "O'Reilly",
+      "ano": 2008,
+      "logoUrl": "https://m.media-amazon.com/images/I/7185IMvz88L._SL1500_.jpg",
+      "preco": 259.87,
+      "autores": [
+        {
+          "nome": "David Cockford",
+          "dataNascimento": "2000-04-28T20:30:34.363-03:00",
+          "genero": "M",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "titulo": "JavaScript - The Good Parts 2",
+      "subtitulo": "",
+      "numeroPaginas": 170,
+      "isbn": "0596517742",
+      "editora": "O'Reilly",
+      "ano": 2008,
+      "logoUrl": "https://m.media-amazon.com/images/I/7185IMvz88L._SL1500_.jpg",
+      "preco": 259.87,
+      "autores": [
+        {
+          "nome": "David Cockford",
+          "dataNascimento": "2000-04-28T20:30:34.363-03:00",
+          "genero": "M",
+          "id": 2
+        }
+      ]
     }
   ]
 }
