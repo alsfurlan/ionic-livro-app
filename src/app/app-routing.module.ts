@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./autores/autores.module').then((m) => m.AutoresPageModule),
   },
+  {
+    path: 'livros',
+    loadChildren: () => import('./livros/livro.module').then(module => module.LivroModule)
+  }
 ];
 
 @NgModule({
@@ -25,4 +29,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
