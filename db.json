@@ -27,6 +27,7 @@
   ],
   "livros": [
     {
+      "id": 1,
       "titulo": "JavaScript - The Good Parts",
       "subtitulo": "",
       "numeroPaginas": 170,
@@ -45,6 +46,7 @@
       ]
     },
     {
+      "id": 2,
       "titulo": "JavaScript - The Good Parts 2",
       "subtitulo": "",
       "numeroPaginas": 170,

@@ -1,7 +1,7 @@
 import { AutorInterface } from 'src/app/autores/types/autor.interface';
 
 export interface LivroInterface {
-  id?: string;
+  id?: number;
   titulo: string;
   subtitulo?: string;
   numeroPaginas: number;
