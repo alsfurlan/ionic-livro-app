@@ -6,5 +6,11 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-
+    <ion-list>
+        <ion-item *ngFor="let livro of livros">
+            <ion-label>
+                {{livro.titulo}}
+            </ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>
