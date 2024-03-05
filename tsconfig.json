@@ -19,15 +19,23 @@
     "target": "es2022",
     "module": "es2020",
     "lib": [
-      "es2018", 
+      "es2018",
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "paths": {
+      "@functions": [
+        "src/app/core/functions/index"
+      ]
+    }
   },
+  "includes": [
+    "src/*"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
   }
 }
