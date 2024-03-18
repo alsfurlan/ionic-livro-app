@@ -26,7 +26,13 @@
     "paths": {
       "@functions": [
         "src/app/core/functions/index"
-      ]
+      ],
+      "@services": [
+        "src/app/core/services/index"
+      ],
+      "@autor": [
+        "src/app/autores/index"
+      ],
     }
   },
   "includes": [

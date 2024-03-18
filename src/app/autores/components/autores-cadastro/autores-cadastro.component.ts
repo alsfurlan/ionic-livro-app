@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { AutorInterface } from '../../types/autor.interface';
 import { AutorService } from '../../services/autor.service';
 import { GeneroEnum } from '../../types/genero.enum';
+import { AlertService } from '@services';
 
 @Component({
   selector: 'app-autores-cadastro',
@@ -16,9 +17,9 @@ export class AutoresCadastroComponent implements OnInit {
   autoresForm: FormGroup;
 
   constructor(
-    private toastController: ToastController,
     private activatedRoute: ActivatedRoute,
     private autorService: AutorService,
+    private alertService: AlertService,
     private router: Router
   ) {
     this.autorId = null;
@@ -61,14 +62,7 @@ export class AutoresCadastroComponent implements OnInit {
       () => this.router.navigate(['autores']),
       (erro) => {
         console.error(erro);
-        this.toastController
-          .create({
-            message: `Não foi possível salvar o autor ${autor.nome}`,
-            duration: 5000,
-            keyboardClose: true,
-            color: 'danger',
-          })
-          .then((t) => t.present());
+        this.alertService.error(`Não foi possível salvar o autor ${autor.nome}`);
       }
     );
   }

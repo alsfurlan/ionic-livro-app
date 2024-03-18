@@ -1,4 +1,4 @@
-import { AutorInterface } from "src/app/autores/types/autor.interface";
+import { AutorInterface } from "@autor";
 import { LivroInterface } from "./livro.interface";
 import { isNumber, isString } from '@functions';
 

@@ -8,6 +8,7 @@ import {
 } from '@ionic/angular';
 import { AutorInterface } from '../../types/autor.interface';
 import { AutorService } from '../../services/autor.service';
+import { AlertService } from '@services';
 
 @Component({
   selector: 'app-autores',
@@ -15,15 +16,14 @@ import { AutorService } from '../../services/autor.service';
   styleUrls: ['./autores-lista.page.scss'],
 })
 export class AutoresListaComponent
-  implements OnInit, ViewWillEnter, ViewDidLeave, ViewWillLeave, ViewDidLeave
-{
+  implements OnInit, ViewWillEnter, ViewDidLeave, ViewWillLeave, ViewDidLeave {
   autores: AutorInterface[] = [];
 
   constructor(
     private alertController: AlertController,
-    private toastController: ToastController,
-    private autorService: AutorService
-  ) {}
+    private autorService: AutorService,
+    private alertService: AlertService
+  ) { }
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter');
@@ -42,7 +42,7 @@ export class AutoresListaComponent
     console.log('ionViewDidLeave');
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   listar() {
     const observable = this.autorService.getAutores();
@@ -52,14 +52,7 @@ export class AutoresListaComponent
       },
       (erro) => {
         console.error(erro);
-        this.toastController
-          .create({
-            message: `Não foi possível listar os autores`,
-            duration: 5000,
-            keyboardClose: true,
-            color: 'danger',
-          })
-          .then((t) => t.present());
+        this.alertService.error('Erro ao carregar listagem de autores');
       }
     );
   }
@@ -88,14 +81,7 @@ export class AutoresListaComponent
         () => this.listar(),
         (erro) => {
           console.error(erro);
-          this.toastController
-            .create({
-              message: `Não foi possível excluir o autor ${autor.nome}`,
-              duration: 5000,
-              keyboardClose: true,
-              color: 'danger',
-            })
-            .then((t) => t.present());
+          this.alertService.error(`Não foi possível excluir o autor ${autor.nome}`);
         }
       );
     }
