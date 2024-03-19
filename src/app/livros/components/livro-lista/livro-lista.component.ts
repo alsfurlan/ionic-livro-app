@@ -6,6 +6,7 @@ import { AlertService } from '@services';
 
 @Component({
     templateUrl: './livro-lista.component.html',
+    styleUrls: ['./livro-lista.component.scss']
 })
 export class LivroListaComponent implements OnInit, OnDestroy {
 
