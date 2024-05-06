@@ -94,7 +94,7 @@ export class LivroCadastroComponent implements OnInit, OnDestroy {
                 .save(livro)
                 .subscribe({
                     next: () => {
-                        this.router.navigate(['../'])
+                        this.router.navigate(['/livros'])
                     },
                     error: (error) => {
                         console.error(error);

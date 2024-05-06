@@ -8,8 +8,9 @@ import { LivroInterface } from "../types/livro.interface";
     providedIn: 'root'
 })
 export class LivroService {
+    
 
-    API_URL = 'http://localhost:3000/livros';
+    API_URL = 'http://localhost:3000/livros/';
 
     constructor(
         private httpClient: HttpClient
@@ -30,5 +31,11 @@ export class LivroService {
                 }),
                 tap((data) => console.log('Data: ', data)),
             )
+    }
+
+    remove(livro: Livro) {
+        return this.httpClient.delete(
+            this.API_URL + livro.id
+        )
     }
 }
