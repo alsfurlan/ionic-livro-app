@@ -31,7 +31,7 @@
                 <h3><strong>Pág.</strong>: {{livro.numeroPaginas}}</h3>
                 <h3><strong>Editora</strong>: {{livro.editora}}</h3>
                 <h3><strong>Ano</strong>: {{livro.ano}}</h3>
-                <ion-button>Editar</ion-button>
+                <ion-button [routerLink]="['edicao', livro.id]">Editar</ion-button>
                 <ion-button (click)="excluir(livro)">Excluir</ion-button>
             </ion-label>
             <ion-text color="danger">

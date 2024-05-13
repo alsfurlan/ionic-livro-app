@@ -25,8 +25,7 @@ export class LivroListaComponent implements OnInit, OnDestroy, ViewWillEnter {
     }
 
     ngOnInit(): void {
-
-
+                
     }
 
     ngOnDestroy(): void {
