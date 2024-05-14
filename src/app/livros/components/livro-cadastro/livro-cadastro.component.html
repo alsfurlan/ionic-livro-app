@@ -12,11 +12,23 @@
     <form [formGroup]="livroForm" (ngSubmit)="onSubmit()">
 
         <ion-item>
-            <ion-input formControlName="titulo" type="text" placeholder="Título" label="Título" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="titulo" type="text" placeholder="Título" label="Título"
+                labelPlacement="floating"></ion-input>
         </ion-item>
 
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('titulo')?.invalid &&
+        (livroForm.get('titulo')?.dirty || livroForm.get('titulo')?.touched)">
+            <span *ngIf="livroForm.get('titulo')?.errors?.['required']">
+                Campo obrigatório
+            </span>
+            <span *ngIf="livroForm.get('titulo')?.errors?.['minlength']">
+                O tamanho mínimo são 3 caracteres
+            </span>
+        </ion-note>
+
         <ion-item>
-            <ion-input formControlName="subtitulo" type="text" placeholder="Subtítulo" label="Subtítulo" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="subtitulo" type="text" placeholder="Subtítulo" label="Subtítulo"
+                labelPlacement="floating"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -24,30 +36,81 @@
                 labelPlacement="floating"></ion-input>
         </ion-item>
 
-        <ion-item>
-            <ion-input formControlName="isbn" type="text" placeholder="ISBN" label="ISBN" labelPlacement="floating"></ion-input>
-        </ion-item>
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('numeroPaginas')?.invalid &&
+                (livroForm.get('numeroPaginas')?.dirty || livroForm.get('numeroPaginas')?.touched)">
+            <span *ngIf="livroForm.get('numeroPaginas')?.errors?.['min']">
+                O valor deve ser no mínimo 5
+            </span>
+        </ion-note>
 
         <ion-item>
-            <ion-input formControlName="editora" type="text" placeholder="Editora" label="Editora" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="isbn" type="text" placeholder="ISBN" label="ISBN"
+                labelPlacement="floating"></ion-input>
         </ion-item>
 
-        <ion-item>
-            <ion-input formControlName="ano" type="number" placeholder="Ano" label="Ano" labelPlacement="floating"></ion-input>
-        </ion-item>
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('isbn')?.invalid &&
+        (livroForm.get('isbn')?.dirty || livroForm.get('isbn')?.touched)">
+            <span *ngIf="livroForm.get('isbn')?.errors?.['minlength'] || livroForm.get('isbn')?.errors?.['maxlength']">
+                O valor deve conter 10 caracteres
+            </span>
+        </ion-note>
 
         <ion-item>
-            <ion-input formControlName="logoUrl" type="url" placeholder="Logo (URL)" label="Logo (URL)" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="editora" type="text" placeholder="Editora" label="Editora"
+                labelPlacement="floating"></ion-input>
         </ion-item>
 
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('editora')?.invalid &&
+        (livroForm.get('editora')?.dirty || livroForm.get('editora')?.touched)">
+            <span *ngIf="livroForm.get('editora')?.errors?.['required']">
+                O campo é obrigatório
+            </span>
+        </ion-note>
+
         <ion-item>
-            <ion-input formControlName="preco" type="number" placeholder="Preço" label="Preço" labelPlacement="floating"></ion-input>
+            <ion-input formControlName="ano" type="number" placeholder="Ano" label="Ano"
+                labelPlacement="floating"></ion-input>
         </ion-item>
+
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('ano')?.invalid &&
+        (livroForm.get('ano')?.dirty || livroForm.get('ano')?.touched)">
+            <span *ngIf="livroForm.get('ano')?.errors?.['required']">
+                O campo é obrigatório
+            </span>
+            <span *ngIf="livroForm.get('ano')?.errors?.['anoInvalido']">
+                O campo não pode ser maior que o ano atual
+            </span>
+        </ion-note>
+
+        <ion-item>
+            <ion-input formControlName="logoUrl" type="url" placeholder="Logo (URL)" label="Logo (URL)"
+                labelPlacement="floating"></ion-input>
+        </ion-item>
+
+
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('logoUrl')?.invalid &&
+        (livroForm.get('logoUrl')?.dirty || livroForm.get('logoUrl')?.touched)">
+            <span *ngIf="livroForm.get('logoUrl')?.errors?.['pattern']">
+                Padrão de URL inválido
+            </span>
+        </ion-note>
+
+        <ion-item>
+            <ion-input formControlName="preco" type="number" placeholder="Preço" label="Preço"
+                labelPlacement="floating"></ion-input>
+        </ion-item>
+
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('preco')?.invalid &&
+        (livroForm.get('preco')?.dirty || livroForm.get('preco')?.touched)">
+            <span *ngIf="livroForm.get('preco')?.errors?.['min']">
+                O preço deve ser maior que 0
+            </span>
+        </ion-note>
 
         <ion-item>
             <ion-item>
-                <ion-select formControlName="autores" label="Autor(es)" value="" multiple="true" placeholder="Selecione os autores"
-                    [compareWith]="compareWith">
+                <ion-select formControlName="autores" label="Autor(es)" value="" multiple="true"
+                    placeholder="Selecione os autores" [compareWith]="compareWith">
                     <ion-select-option *ngFor="let autor of autores" [value]="autor">
                         {{autor.nome}}
                     </ion-select-option>
@@ -55,8 +118,15 @@
             </ion-item>
         </ion-item>
 
+        <ion-note class="ion-padding" color="danger" *ngIf="livroForm.get('autores')?.invalid &&
+        (livroForm.get('autores')?.dirty || livroForm.get('autores')?.touched)">
+            <span *ngIf="livroForm.get('autores')?.errors?.['autoresInvalido']">
+                Devem ser selecionados no mínimo 1 autor e no máximo 10.
+            </span>
+        </ion-note>
+
         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-button type="submit">
+            <ion-button type="submit" [disabled]="livroForm.invalid">
                 <ion-icon name="checkmark"></ion-icon>
             </ion-button>
         </ion-fab>
