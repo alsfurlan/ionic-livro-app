@@ -13,7 +13,7 @@ import { AlertService } from '@services';
   styleUrls: ['./autores-cadastro.component.scss'],
 })
 export class AutoresCadastroComponent implements OnInit {
-  autorId: number | null;
+  autorId: string | null;
   autoresForm: FormGroup;
 
   constructor(
@@ -29,7 +29,7 @@ export class AutoresCadastroComponent implements OnInit {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      this.autorId = parseInt(id);
+      this.autorId = id;
       this.autorService.getAutor(this.autorId).subscribe((autor) => {
         this.autoresForm = this.createForm(autor);
       });
@@ -56,13 +56,17 @@ export class AutoresCadastroComponent implements OnInit {
   salvar() {
     const autor: AutorInterface = {
       ...this.autoresForm.value,
-      id: this.autorId,
     };
+    if (this.autorId) {
+      autor.id = this.autorId;
+    }
     this.autorService.salvar(autor).subscribe(
       () => this.router.navigate(['autores']),
       (erro) => {
         console.error(erro);
-        this.alertService.error(`Não foi possível salvar o autor ${autor.nome}`);
+        this.alertService.error(
+          `Não foi possível salvar o autor: ${erro.error.message}`
+        );
       }
     );
   }
